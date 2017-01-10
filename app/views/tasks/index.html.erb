@@ -22,7 +22,7 @@
 
         <%= link_to new_task_path do %>
 
-             <%=  check_box_tag "task_ids[]", task.id %>
+
             <%=render partial: 'task', object: task %>
 
         <% end %>
