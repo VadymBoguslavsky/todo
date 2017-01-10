@@ -6,5 +6,13 @@
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <auth-required>false</auth-required>
     </data-source>
+    <data-source name="Rails todo: test" uuid="ce0ab8c8-3228-4536-93e1-1e783220f813">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails todo: production" uuid="92e6eb1f-03d2-4ec5-a098-d34af289a68d">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+    </data-source>
   </component>
 </project>
