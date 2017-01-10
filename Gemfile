@@ -32,11 +32,10 @@ end
 
 group :development do
   gem 'web-console'
-  gem 'sqlite3'
-end
 
-group :production do
+end
 gem 'pg'
+group :production do
 gem 'rails_12factor'
 end
 
