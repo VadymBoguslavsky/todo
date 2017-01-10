@@ -13,6 +13,8 @@
  *= require font-awesome
  *= require_tree .
  *= require_self
+ *= require bootstrap-datepicker
+
  */
 
 
@@ -22,12 +24,14 @@
 body {font-size: 1.75em }
 .buffer-top {
   margin-top: 2em;
+
   .action {opacity: 0;}
 
   &:hover .action {
     opacity: 1;
     transition: opacity 0.5s ease;
-  }
+    letter-spacing: 10px;
+   }
 }
 
 .task{
@@ -41,3 +45,4 @@ body {font-size: 1.75em }
 .done {
   margin-left: 10px;
 }
+

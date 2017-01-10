@@ -14,8 +14,19 @@
   <div class="buffer-top">
 
 
+
+
     <% @tasks.each do |task| %>
-        <%=render partial: 'task', object: task %>
+
+
+
+        <%= link_to new_task_path do %>
+
+             <%=  check_box_tag "task_ids[]", task.id %>
+            <%=render partial: 'task', object: task %>
+
+        <% end %>
+
     <% end %>
 
     <hr />
@@ -23,7 +34,10 @@
     <h3>Completed tasks</h3>
 
     <% @completed_tasks.each do |task| %>
-        <%=render partial: 'task', object: task %>
+        <%= link_to new_task_path do %>
+            <%= check_box_tag 'task', task.id %>
+            <%=render partial: 'task', object: task %>
+        <% end %>
     <% end %>
 
 

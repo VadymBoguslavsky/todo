@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
 
@@ -16,8 +16,11 @@ before_action :authenticate_user!
     @task = Task.new task_params
 
     @task.save
-
-    redirect_to tasks_path
+    if @task.valid?
+      redirect_to tasks_path
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -35,9 +38,7 @@ before_action :authenticate_user!
 
   def complete
     @task = Task.find params[:id]
-
     @task.complete!
-
     redirect_to tasks_path
   end
 
@@ -53,8 +54,8 @@ before_action :authenticate_user!
 
   def task_params
     params.require(:task).permit([
-    :title, :priority, :completed
-     ])
+                                     :title, :priority, :completed, :date, :description
+                                 ])
   end
 
 end

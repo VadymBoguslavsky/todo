@@ -5,10 +5,13 @@ PRIORITIES = [
 ['Now', 3]
 ]
 
+
+
+validates :title, length: {minimum: 5, too_short: "%{count} characters is the minimum allowed"}
+
 def complete!
 self.completed = true
 save
 end
-
 
 end

@@ -1,8 +1,15 @@
 <div class="col-md-6">
   <%= simple_form_for @task do |f| %>
-  <p><%= f.input :title %></p>
-  <p><%= f.select :priority, Task::PRIORITIES %></p>
-  <p><%= f.input :completed %></p>
-  <p><%= f.button :submit %></p>
-  <%end%>
+      <p><%= f.input :title %></p>
+      <p><%= f.select :priority, Task::PRIORITIES %></p>
+      <p><%= f.input :description %></p>
+      <p> <%= f.text_field :date, :class => 'datepicker' %></p>
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $('.datepicker').datepicker();
+          });
+      </script>
+      <p><%= f.input :completed %></p>
+      <p><%= f.button :submit %></p>
+  <% end %>
 </div>
