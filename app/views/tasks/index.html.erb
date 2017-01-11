@@ -18,17 +18,16 @@
   <div class="buffer-top taskswrap">
 
 
-<div class="list-group">
-  <button type="button" class="list-group-item"><% @tasks.each do |task| %>
-        <%= link_to edit_task_path(task) do %>
-            <div class="checkbox taskwrapper">
-              <%= check_box_tag ("task") %>
-              <%= render partial: 'task', object: task %><hr/>
-            </div>
-        <% end %>
-    <% end %></button>
+<% @tasks.each do |task| %>
+          <%= link_to edit_task_path(task) do %>
+              <div class="checkbox taskwrapper">
+                <%= check_box_tag ("task") %>
+                <%= render partial: 'task', object: task %>
+                <hr/>
+              </div>
+          <% end %>
+      <% end %>
 
-</div>
 
 
 
