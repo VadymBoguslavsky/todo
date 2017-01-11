@@ -1,7 +1,13 @@
-<%= link_to "Sign out", destroy_user_session_path,:class => 'navbar-link', method: :delete %> <br>
-<%= link_to "Edit user info", edit_user_registration_path,:class => 'navbar-link' %>
-<div class= 'col-md-12'>
-<h1>My tasks</h1>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-link', method: :delete %></li>
+  <li role="presentation"><%= link_to "Edit user info", edit_user_registration_path, :class => 'navbar-link' %></li>
+
+</ul>
+
+
+
+<div class='col-md-12'>
+  <h1>My tasks</h1>
 
 
   <div class="buffer-top">
@@ -9,34 +15,31 @@
   </div>
 
 
+  <div class="buffer-top taskswrap">
 
 
-  <div class="buffer-top">
-
-
-
-
-    <% @tasks.each do |task| %>
-
-
-
-        <%= link_to new_task_path do %>
-
-
-            <%=render partial: 'task', object: task %>
-
+<div class="list-group">
+  <button type="button" class="list-group-item"><% @tasks.each do |task| %>
+        <%= link_to edit_task_path(task) do %>
+            <div class="checkbox taskwrapper">
+              <%= check_box_tag ("task") %>
+              <%= render partial: 'task', object: task %><hr/>
+            </div>
         <% end %>
+    <% end %></button>
 
-    <% end %>
+</div>
 
-    <hr />
+
+
+    <hr/>
 
     <h3>Completed tasks</h3>
 
     <% @completed_tasks.each do |task| %>
         <%= link_to new_task_path do %>
             <%= check_box_tag 'task', task.id %>
-            <%=render partial: 'task', object: task %>
+            <%= render partial: 'task', object: task %>
         <% end %>
     <% end %>
 

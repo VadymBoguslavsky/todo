@@ -50,6 +50,13 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def destroy_multiple
+    @task = Task.find(params[:task_id])
+  end
+
+
+
+
   private
 
   def task_params

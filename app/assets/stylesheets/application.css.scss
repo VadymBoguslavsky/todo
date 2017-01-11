@@ -16,31 +16,72 @@
  *= require bootstrap-datepicker
 
  */
-
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {font-size: 1.75em }
+body {
+  font-size: 1.75em
+}
+
 .buffer-top {
   margin-top: 2em;
 
-  .action {opacity: 0;}
+  .action {
+    opacity: 0;
+  }
 
   &:hover .action {
     opacity: 1;
     transition: opacity 0.5s ease;
     letter-spacing: 10px;
-   }
+  }
 }
 
-.task{
-  margin-bottom: 1em;
+.checkbox {
+
+  display: flex;
+  padding: 0 0 0 30px;
+  width: 1100px;
+
 }
-.priority_1{color:green}
-.priority_2{color:yellow}
-.priority_3{color:red}
-.completed_true {color:gray; text-decoration: line-through}
+
+.taskwrapper {
+  margin: 0;
+  line-height: 1;
+
+}
+
+.taskswrap{
+height: 100px;
+}
+
+
+.priority_1 {
+  color: green
+}
+
+.priority_2 {
+  color: yellow
+}
+
+.priority_3 {
+  color: red
+}
+
+.completed_true {
+  color: gray;
+  text-decoration: line-through
+}
+
+.buttons_to_the_right {
+   margin: 0 50px;
+  padding: 0 50px;
+
+
+
+
+}
+
 
 .done {
   margin-left: 10px;
