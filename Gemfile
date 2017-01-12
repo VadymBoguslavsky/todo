@@ -32,9 +32,10 @@ end
 
 group :development do
   gem 'web-console'
-
+  gem 'pry'
 end
 gem 'pg'
+gem 'pgreset'
 group :production do
 gem 'rails_12factor'
 end

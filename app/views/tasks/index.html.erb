@@ -17,32 +17,40 @@
 
   <div class="buffer-top taskswrap">
 
-
-<% @tasks.each do |task| %>
-          <%= link_to edit_task_path(task) do %>
-              <div class="checkbox taskwrapper">
-                <%= check_box_tag ("task") %>
-                <%= render partial: 'task', object: task %>
-                <hr/>
-              </div>
+    <%= form_tag destroy_multiple_tasks_path, method: :delete, class: 'batch-del-form'  do  %>
+        <ul>
+          <% @tasks.each do |task| %>
+              <%= link_to edit_task_path(task) do %>
+                  <hr/>
+                  <li class="checkbox taskwrapper">
+                    <%= check_box_tag 'tasks[]', task.id, false, class: 'batch-del batch-del-checkbox' %>
+                    <%= render partial: 'task', object: task %>
+                  </li>
+              <% end %>
+              </ul>
           <% end %>
-      <% end %>
+          <%= submit_tag "Delete selected", method: :delete, type: "submit", data: { confirm: "Are you sure?" }, class: "btn btn-danger batch-del-submit but_delete"%>
+ <% end %>
 
 
 
 
     <hr/>
-
     <h3>Completed tasks</h3>
 
-    <% @completed_tasks.each do |task| %>
-        <%= link_to new_task_path do %>
-            <%= check_box_tag 'task', task.id %>
-            <%= render partial: 'task', object: task %>
-        <% end %>
-    <% end %>
+
+    <ul>
+      <% @completed_tasks.each do |task| %>
+          <%= link_to edit_task_path(task) do %>
+              <li class="checkbox taskwrapper completedwrapper">
+                <%= check_box_tag 'task.id', task.id %>
+                <%= render partial: 'task', object: task %>
+              </li>
+          <% end %>
+          </ul>
+      <% end %>
 
 
-  </div>
+      </div>
 
 </div>
