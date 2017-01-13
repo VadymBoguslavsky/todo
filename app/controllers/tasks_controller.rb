@@ -43,13 +43,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @tasks = Task.where id: params[:tasks]
-    @tasks.destroy_all
+    @tasks = Task.find params[:id]
+    @tasks.destroy
     redirect_to tasks_path
   end
 
   def destroy_multiple
-    Task.where(:id => params[:task_id]).destroy_all
+    Task.where(id: params[:tasks]).destroy_all
     redirect_to tasks_path
   end
 
