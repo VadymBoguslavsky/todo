@@ -13,5 +13,4 @@ def complete!
 self.completed = true
 save
 end
-
 end
