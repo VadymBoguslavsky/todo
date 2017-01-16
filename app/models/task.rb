@@ -6,7 +6,6 @@ PRIORITIES = [
 ]
 
 
-
 validates :title, presence: true, length: {minimum: 5, too_short: "%{count} characters is the minimum allowed"}
 
 def complete!
