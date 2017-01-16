@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'capybara'
   gem 'database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
