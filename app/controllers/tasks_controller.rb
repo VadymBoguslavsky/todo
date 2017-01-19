@@ -3,10 +3,13 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
     @tasks = Task.where(completed: false).order('priority DESC')
+  end
+
+  def completed_tasks
     @completed_tasks = Task.where(completed: true).order('updated_at')
   end
+
 
   def new
     @task = Task.new
@@ -17,6 +20,7 @@ class TasksController < ApplicationController
 
     @task.save
     if @task.valid?
+      flash[:notice] = "Task successfully created"
       redirect_to tasks_path
     else
       render "new"

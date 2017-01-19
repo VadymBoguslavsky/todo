@@ -7,12 +7,26 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-
 <body>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <% if user_signed_in? %>
+        <li role="presentation" class="active"><%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-link', method: :delete %></li>
+        <li role="presentation"><%= link_to "Edit user info", edit_user_registration_path, :class => 'navbar-link' %></li>
 
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+        <% if params[:action] == 'index' %>
+            <li role="presentation"><%= link_to "Completed Tasks", completed_tasks_tasks_path, :class => 'navbar-link' %></li>
+        <% else %>
+            <li role="presentation"><%= link_to "Main", tasks_path, :class => 'navbar-link' %></li>
+        <% end %>
+    <% else %>
+        <li role="presentation"><%= link_to "Sign in", new_user_session_path, :class => 'navbar-link' %></li>
+    <% end %>
+  </ul>
+  </br>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
 
 
 <div class='container'>
