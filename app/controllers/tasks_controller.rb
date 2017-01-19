@@ -49,11 +49,13 @@ class TasksController < ApplicationController
   def destroy
     @tasks = Task.find params[:id]
     @tasks.destroy
+    flash[:notice] = "Task successfully delated"
     redirect_to tasks_path
   end
 
   def destroy_multiple
     Task.where(id: params[:tasks]).destroy_all
+    flash[:notice] = "Tasks successfully delated"
     redirect_to tasks_path
   end
 
