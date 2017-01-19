@@ -16,12 +16,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new task_params
-
+    @task = current_user.tasks.build(task_params)
     @task.save
     if @task.valid?
       flash[:notice] = "Task successfully created"
       redirect_to tasks_path
+
     else
       render "new"
     end
@@ -47,15 +47,20 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @tasks = Task.find params[:id]
-    @tasks.destroy
-    flash[:notice] = "Task successfully delated"
-    redirect_to tasks_path
+    @task = Task.find params[:id]
+    # binding.pry
+    if current_user.id == @task.user_id
+      @task.destroy
+      flash[:notice] = "You succesfully deleted task"
+      redirect_to tasks_path
+    else
+      flash[:notice] = "You do not have the permittions to delete this task"
+      redirect_to tasks_path
+    end
   end
 
   def destroy_multiple
     Task.where(id: params[:tasks]).destroy_all
-    flash[:notice] = "Tasks successfully delated"
     redirect_to tasks_path
   end
 
@@ -64,7 +69,7 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit([
-                                     :title, :priority, :completed, :date, :description
+                                     :title, :priority, :completed, :date, :description, :user_id
                                  ])
   end
 
