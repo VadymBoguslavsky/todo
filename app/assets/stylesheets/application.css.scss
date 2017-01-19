@@ -52,13 +52,13 @@ body {
 
 }
 
-.taskswrap{
-height: 100px;
+.taskswrap {
+  height: 100px;
 }
 
-
 .priority_1 {
-  color: green
+  color: green;
+
 }
 
 .priority_2 {
@@ -74,7 +74,7 @@ height: 100px;
   text-decoration: line-through
 }
 
-.taskpriority{
+.taskpriority {
   width: 100%;
 }
 
@@ -85,8 +85,20 @@ height: 100px;
   justify-content: space-between;
 
 }
-.edittask{
 
+.completedwrapper {
+  padding: 10px 0;
+  margin-left: 30px;
+}
+
+.but_delete {
+  margin: 30px 0 0 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .done {

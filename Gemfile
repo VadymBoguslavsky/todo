@@ -12,12 +12,12 @@ gem 'font-awesome-rails'
 
 group :assets do
 
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
 
-gem 'coffee-rails', '~> 4.2'
+  gem 'coffee-rails', '~> 4.2'
 
-gem 'therubyracer', platforms: :ruby
+  gem 'therubyracer', platforms: :ruby
 
 end
 
@@ -25,18 +25,23 @@ gem 'puma', '~> 3.0'
 gem 'listen', '~> 3.1.5'
 
 
-
 group :development, :test do
-   gem 'byebug', platform: :mri
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'factory_girl'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
   gem 'web-console'
-
+  gem 'pry'
 end
 gem 'pg'
+gem 'pgreset'
 group :production do
-gem 'rails_12factor'
+  gem 'rails_12factor'
 end
 
 ruby '2.3.1'
