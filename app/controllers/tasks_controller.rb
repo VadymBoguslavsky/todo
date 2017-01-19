@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = Task.where(completed: false).order('priority DESC')
+    @tasks = Task.where(user_id: current_user.id)
   end
 
   def completed_tasks
