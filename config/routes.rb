@@ -9,5 +9,4 @@ Rails.application.routes.draw do
       get 'completed_tasks'
     end
   end
-
 end

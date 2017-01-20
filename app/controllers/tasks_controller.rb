@@ -3,13 +3,11 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks
-    @tasks = @tasks.where(completed: false).order('updated_at')
+    @tasks = current_user.tasks.where(completed: false).order('updated_at')
   end
 
   def completed_tasks
-    @tasks = current_user.tasks
-    @completed_tasks = @tasks.where(completed: true).order('updated_at')
+    @completed_tasks = current_user.tasks.where(completed: true).order('updated_at')
   end
 
   def new
@@ -26,14 +24,17 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-    redirect_to tasks_path
-  end
-
   def edit
     @task = Task.find params[:id]
   end
 
+#   def update
+#     @task = Task.find params[:id]
+#     if @task.update_attributes(params[:task])
+# #task_params
+#     end
+#     redirect_to tasks_path
+#   end
   def update
     @task = Task.find params[:id]
     @task.update_attributes task_params
