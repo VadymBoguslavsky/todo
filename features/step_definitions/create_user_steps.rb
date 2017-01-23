@@ -3,14 +3,14 @@ Given /^I have tasks titled (.+)$/ do |titles|
     Task.create!(:title => title)
   end
 end
-Given /^a user visits the signin page$/ do
-  fill_in "Email", with: 'axixe92@gmail.com'
-  fill_in "Password", with: 921117
-  click_button "Log in"
+Given /^a user visits the sign in page$/ do
+  visit new_user_session_path
 end
 
 When /^the user want to log in$/ do
-  visit new_user_session_path
+  fill_in "Email", with: 'axixe92@gmail.com'
+  fill_in "Password", with: 921117
+  click_button "Log in"
 end
 
 Then /^I should see Pizza$/ do

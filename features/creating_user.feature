@@ -3,8 +3,8 @@ Feature: User want to log in
   As an author
   I want to create and manage tasks
 
-  Scenario: Tasks List
-    Given a user visits the signin page
+  Scenario: Log in
+    Given a user visits the sign in page
     When the user want to log in
     Then I should see Pizza
     And  I do not have tasks now
