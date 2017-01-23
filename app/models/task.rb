@@ -9,8 +9,4 @@ class Task < ApplicationRecord
 
   belongs_to :user
 
-  def update_attribute
-    self.completed = true
-    save
-  end
 end

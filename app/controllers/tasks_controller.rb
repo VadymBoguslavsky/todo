@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   def complete
     @tasks = current_user.tasks
     @task = @tasks.find params[:id]
-    @task.update_attribute
+    @task.update_attribute(:completed, true)
     redirect_to tasks_path
   end
 
