@@ -7,8 +7,10 @@ RSpec.describe Task, type: :model do
   it 'we got what we need?' do
     expect(@task.title).to eq("my new title")
   end
-
-
+    it 'validations' do
+     task = FactoryGirl.create(:task)
+     task.title.should == "Чак Норрис"
+ end
   it 'is not valid with a title longer than 100 symbols' do
     task = Task.new(title: 'a' * 101)
     expect(task).to be_valid
