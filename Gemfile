@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'cucumber-rails', :require => false
   gem "factory_girl_rails", "~> 4.0"
 end
 

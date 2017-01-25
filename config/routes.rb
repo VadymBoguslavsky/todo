@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     put :complete, on: :member
     collection do
       post :destroy_multiple
+      get 'completed_tasks'
     end
   end
-
 end

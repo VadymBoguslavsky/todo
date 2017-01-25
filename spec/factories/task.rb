@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :task do
-
-    title "My new title"
-
+    title "Чак Норрис"
+    description "Удар ногой с разворота"
   end
 end
