@@ -1,15 +1,10 @@
-Given /^I have tasks titled (.+)$/ do |titles|
-  titles.split(', ').each do |title|
-    Task.create!(:title => title)
-  end
-end
 Given /^a user visits the sign in page$/ do
   visit new_user_session_path
 end
 
 When /^the user want to log in$/ do
-  fill_in "Email", with: 'axixe92@gmail.com'
-  fill_in "Password", with: '921117'
+  fill_in 'Email', with: 'axixe92@gmail.com'
+  fill_in 'Password', with: '921117'
   click_button "Log in"
 end
 
