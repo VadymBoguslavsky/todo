@@ -18,6 +18,24 @@
           <% end %>
           <%= submit_tag "Delete selected", method: :delete, type: "submit", data: {confirm: "Are you sure?"}, class: "btn btn-danger batch-del-submit but_delete" %>
     <% end %>
-    <hr/>
+
   </div>
+  <br>
+  <br>
+  <h3 class="completed">Completed tasks</h3>
+
+  <%= form_tag destroy_multiple_tasks_path, class: 'completed_form' do %>
+      <ul>
+        <% @completed_tasks.each do |task| %>
+            <%= link_to edit_task_path(task) do %>
+                <hr/>
+                <li class="checkbox taskwrapper completedwrapper">
+                  <%= check_box_tag 'tasks[]', task.id %>
+                  <%= render partial: 'task', object: task %>
+                </li>
+            <% end %>
+            </ul>
+        <% end %>
+        <%= submit_tag "Delete selected", method: :delete, type: "submit", data: {confirm: "Are you sure?"}, class: "btn btn-danger batch-del-submit but_delete" %>
+  <% end %>
 </div>
