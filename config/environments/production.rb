@@ -92,8 +92,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  Net::SMTP.start('your.smtp.server', 587, 'mail.from.domain',
-                  'axixe92@gmail.com', 'lilikyky921117vb', :plain)
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default :charset => "utf-8"
