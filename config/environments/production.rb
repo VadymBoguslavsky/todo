@@ -80,6 +80,16 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+  :deliver_with => :deliver,
+  :email_prefix => "[PREFIX] ",
+  :sender_address => 'axixe92@gmail.com',
+  :exception_recipients => 'axixe92@gmail.com'
+  }
+
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   Net::SMTP.start('your.smtp.server', 587, 'mail.from.domain',
@@ -91,7 +101,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {:host => 'frozen-crag-41984.herokuapp.com'}
   config.action_mailer.smtp_settings = {
       user_name: "axixe92@gmail.com",
-      password: "lilikyky921117vb",
+      password: "lilikyky92VB",
       domain: "gmail.com",
       address: "smtp.gmail.com",
       port: 587,

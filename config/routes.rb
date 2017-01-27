@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}, :path_names => {
       :sign_in => 'signin',
       :sign_out => 'signout',
-      :sign_up => 'signup'
-  }
+      :sign_up => 'signup'}
 
-  resource :users
+      resource :users
 
   get '/users/confirmation/new', to: 'devise/confirmations#new'
   root 'tasks#index'

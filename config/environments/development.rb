@@ -52,6 +52,15 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    :email_prefix => "[PREFIX] ",
+    :sender_address => 'axixe92@gmail.com',
+    :exception_recipients => 'axixe92@gmail.com'
+  }
+
+
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
@@ -59,7 +68,7 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
       user_name:      "axixe92@gmail.com",
-      password:       "lilikyky921117vb",
+      password:       "lilikyky92VB",
       domain:         "gmail.com",
       address:       "smtp.gmail.com",
       port:          587,
