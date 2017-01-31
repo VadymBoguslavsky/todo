@@ -23,7 +23,7 @@ end
 
 gem 'puma', '~> 3.0'
 gem 'listen', '~> 3.1.5'
-
+gem 'mailgun_rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
