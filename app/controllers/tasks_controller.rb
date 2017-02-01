@@ -15,7 +15,6 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
     if @task.save
       flash[:notice] = "Task successfully created"
-      ModelMailer.new_record_notification(@record).deliver
       redirect_to tasks_path
     else
       render "new"
@@ -60,4 +59,3 @@ class TasksController < ApplicationController
                                  ])
   end
 end
-

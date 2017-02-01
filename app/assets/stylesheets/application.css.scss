@@ -23,6 +23,10 @@ body {
   font-size: 1.75em
 }
 
+
+.hover2{ display: none;}
+.hover1:hover .hover2{ display: table;  }
+
 .buffer-top {
   margin-top: 2em;
 
