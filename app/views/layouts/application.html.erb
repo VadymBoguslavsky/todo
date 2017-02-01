@@ -20,12 +20,13 @@
       <% end %>
     </ul>
     </br>
-    <% flash.each do |type, message| %>
+
+  </div>
+      <% flash.each do |type, message| %>
         <div class="alert <%= bootstrap_class_for(type) %> fade in">
           <%= message %>
         </div>
     <% end %>
-  </div>
 </nav>
 <div class='container'>
   <div class='row'><%= yield %></div>
