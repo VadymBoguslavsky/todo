@@ -44,19 +44,19 @@
 
 $(document).on("turbolinks:load", function(){
 
-    $('#ditch input:checkbox').change(function () {
-              if ($('#ditch input:checkbox:checked').length>0) {
-            $("#ditch1").removeAttr( "disabled")  ;
+    $('#form1 input:checkbox').change(function () {
+              if ($('#form1 input:checkbox:checked').length>0) {
+            $("#but_disabled1").removeAttr( "disabled")  ;
         } else {
-            $("#ditch1").attr( "disabled", "disabled")  ;
+            $("#but_disabled1").attr( "disabled", "disabled")  ;
         }
     });
 
     $('#form2 input:checkbox').change(function () {
         if ($('#form2 input:checkbox:checked').length>0) {
-            $("#ditch2").removeAttr( "disabled")  ;
+            $("#but_disabled2").removeAttr( "disabled")  ;
         } else {
-            $("#ditch2").attr( "disabled", "disabled")  ;
+            $("#but_disabled2").attr( "disabled", "disabled")  ;
         }
     });
 });
