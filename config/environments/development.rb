@@ -57,5 +57,4 @@ Rails.application.configure do
   #     domain: '<sandbox695fe198affb4c3c8d5c8a893419a359.mailgun.org>'
   # }
   # config.action_mailer.default_url_options = {:host => 'localhost:3000'}
-
 end
