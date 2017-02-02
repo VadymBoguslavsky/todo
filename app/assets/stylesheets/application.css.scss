@@ -20,12 +20,19 @@
 @import "bootstrap";
 
 body {
-  font-size: 1.75em
+  font-size: 1.75em;
+  background-image: image-url('backgroundimage.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+.hover2 {
+  display: none;
+}
 
-.hover2{ display: none;}
-.hover1:hover .hover2{ display: table;  }
+.hover1:hover .hover2 {
+  display: table;
+}
 
 .buffer-top {
   margin-top: 2em;
@@ -57,9 +64,10 @@ body {
   height: 100%;
 }
 
-.completed{
+.completed {
   margin-top: 50px;
 }
+
 .completed_true {
   text-decoration: line-through
 }
