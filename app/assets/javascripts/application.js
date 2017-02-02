@@ -18,8 +18,10 @@
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
-
-
+//= require jquery
+//= require best_in_place
+//= require best_in_place.jquery-ui
+//= require turbolinks
 /*
  SortTable
  version 2
@@ -37,6 +39,32 @@
  This basically means: do what you want with it.
  */
 
+
+
+
+$(document).on("turbolinks:load", function(){
+
+    $('#ditch input:checkbox').change(function () {
+              if ($('#ditch input:checkbox:checked').length>0) {
+            $("#ditch1").removeAttr( "disabled")  ;
+        } else {
+            $("#ditch1").attr( "disabled", "disabled")  ;
+        }
+    });
+
+    $('#form2 input:checkbox').change(function () {
+        if ($('#form2 input:checkbox:checked').length>0) {
+            $("#ditch2").removeAttr( "disabled")  ;
+        } else {
+            $("#ditch2").attr( "disabled", "disabled")  ;
+        }
+    });
+});
+
+
+$(document).ready(function() {
+       jQuery(".best_in_place").best_in_place();
+});
 
 var stIsIE = /*@cc_on!@*/false;
 

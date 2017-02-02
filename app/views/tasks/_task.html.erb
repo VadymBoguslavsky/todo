@@ -5,17 +5,17 @@
 
         <th><%= check_box_tag 'tasks[]', task.id, false %></th>
         <th><span class="title"><%= link_to edit_task_path(task) do %>
-          <span class="title"><%= task.title %></span>
+          <span class="title"><%=best_in_place task, :title %></span>
       <% end %>
     </span>
         </th>
-        <th class="text-center"><%= task.priority %></th>
+        <th class="text-center"><%=best_in_place task, :priority %></th>
         <th class="text-center">
   <% else %>
       <tr data-item_id="<%= task.id %>" class="hover1 completed_true">
         <th><%= check_box_tag 'tasks[]', task.id, false %></th>
         <th><span class="title"><%= link_to edit_task_path(task) do %>
-          <span class="title completed_true"><%= task.title %></span>
+          <span class="title"><%= task.title %></span>
       <% end %>
     </span>
         </th>
