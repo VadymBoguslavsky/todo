@@ -85,6 +85,7 @@ Rails.application.configure do
       api_key: '<key-bcad8a352aeb9df5e2706720320a16f2>',
       domain: '<sandbox695fe198affb4c3c8d5c8a893419a359.mailgun.org>'
   }
+  config.action_mailer.default_url_options = {:host => 'frozen-crag-41984.herokuapp.com'}
   # Do not dump schema after migrations.
 
   # config.action_mailer.perform_deliveries = true

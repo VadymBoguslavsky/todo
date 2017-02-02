@@ -56,5 +56,19 @@ Rails.application.configure do
       api_key: '<key-bcad8a352aeb9df5e2706720320a16f2>',
       domain: '<sandbox695fe198affb4c3c8d5c8a893419a359.mailgun.org>'
   }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.smtp_settings = {
+  #     user_name: "axixe92@gmail.com",
+  #     password: "lilikyky92VB",
+  #     domain: "gmail.com",
+  #     address: "smtp.gmail.com",
+  #     port: 587,
+  #     authentication: 'plain',
+  #     enable_starttls_auto: true
+  # }
 
 end
