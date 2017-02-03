@@ -2,14 +2,13 @@
 
   <% unless task.completed? %>
       <tr data-item_id="<%= task.id %>" class="hover1">
-
         <th><%= check_box_tag 'tasks[]', task.id, false %></th>
         <th><span class="title"><%= link_to edit_task_path(task) do %>
-          <span class="title"><%=best_in_place task, :title %></span>
+          <span class="title"><%= best_in_place task, :title %></span>
       <% end %>
     </span>
         </th>
-        <th class="text-center"><%=best_in_place task, :priority %></th>
+        <th class="text-center"><%= best_in_place task, :priority %></th>
         <th class="text-center">
   <% else %>
       <tr data-item_id="<%= task.id %>" class="hover1 completed_true">
