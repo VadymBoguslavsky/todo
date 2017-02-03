@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       :sign_up => 'signup'}
 
       resource :users
-
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
   get '/users/confirmation/new', to: 'devise/confirmations#new'
   root 'tasks#index'
   resources :tasks do
