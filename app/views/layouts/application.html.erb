@@ -7,9 +7,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script src="sorttable.js"></script>
   <script>
-      setTimeout("$('.alert').fadeOut('slow')", 6000)
       setTimeout("$('.alert').fadeOut('slow')", 3000)
-  </script>
+      </script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -26,12 +25,13 @@
     </br>
 
   </div>
-  <% flash.each do |type, message| %>
-      <div class="alert <%= bootstrap_class_for(type) %> fade in">
-        <%= message %>
-      </div>
-  <% end %>
+
 </nav>
+<% flash.each do |type, message| %>
+    <div class="alert <%= bootstrap_class_for(type) %> fade in">
+      <%= message %>
+    </div>
+<% end %>
 <div class='container'>
   <div class='row'><%= yield %></div>
 </div>

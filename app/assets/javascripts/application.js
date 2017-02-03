@@ -90,6 +90,28 @@ function uncheck1() {
     }
 }
 
+
+$(document).on("turbolinks:load", function () {
+
+    $('#form1 input:checkbox').change(function () {
+        if ($('#form1 input:checkbox:checked').length > 0) {
+            $("#but_disabled1").removeAttr("disabled");
+        } else {
+            $("#but_disabled1").attr("disabled", "disabled");
+        }
+    });
+
+    $('#form2 input:checkbox').change(function () {
+        if ($('#form2 input:checkbox:checked').length > 0) {
+            $("#but_disabled2").removeAttr("disabled");
+        } else {
+            $("#but_disabled2").attr("disabled", "disabled");
+        }
+    });
+
+
+});
+
 $(document).ready(function () {
     jQuery(".best_in_place").best_in_place();
 });
