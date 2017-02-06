@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {registrations: "registrations"}
-  root 'tasks#index'
+  devise_for :users, controllers: {registrations: "registrations"}, :path_names => {
+      :sign_in => 'signin',
+      :sign_out => 'signout',
+      :sign_up => 'signup'}
 
+      resource :users
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  get '/users/confirmation/new', to: 'devise/confirmations#new'
+  root 'tasks#index'
   resources :tasks do
     put :complete, on: :member
     collection do

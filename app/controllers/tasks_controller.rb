@@ -4,9 +4,6 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.where(completed: false).order('updated_at')
-  end
-
-  def completed_tasks
     @completed_tasks = current_user.tasks.where(completed: true).order('updated_at')
   end
 
@@ -62,4 +59,3 @@ class TasksController < ApplicationController
                                  ])
   end
 end
-

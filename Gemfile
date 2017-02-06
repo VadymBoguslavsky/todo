@@ -9,7 +9,7 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'font-awesome-rails'
-
+gem 'turbolinks', '~> 5'
 group :assets do
 
   gem 'sass-rails', '~> 5.0'
@@ -20,10 +20,10 @@ group :assets do
   gem 'therubyracer', platforms: :ruby
 
 end
-
+gem 'best_in_place', '~> 3.0.1'
 gem 'puma', '~> 3.0'
 gem 'listen', '~> 3.1.5'
-
+gem 'mailgun_rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener_web'
   gem 'web-console'
   gem 'pry'
 end
@@ -44,5 +45,5 @@ gem 'pgreset'
 group :production do
   gem 'rails_12factor'
 end
-
+gem 'exception_notification'
 ruby '2.3.1'
