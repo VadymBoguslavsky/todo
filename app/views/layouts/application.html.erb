@@ -33,14 +33,11 @@
     </br>
   </div>
 </nav>
-<% flash.each do |type, message| %>
-  <div class="alert <%= bootstrap_class_for(type) %> fade in">
-    <%= message %>
-    <input type="button" class="btn btn-warning" value="Check All" onclick="check();">
-  </div>
-<% end %>
 <div class='container'>
-  <div class='row'><%= yield %></div>
+  <div class='row'>
+    <%= flash_messages %>
+    <%= yield %>
+  </div>
 </div>
 </body>
 </html>
