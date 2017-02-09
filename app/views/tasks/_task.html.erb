@@ -1,4 +1,5 @@
 <div class="task priority_<%= task.priority %> completed_<%= task.completed %>  taskpriority ui-state-default">
+
 <% unless task.completed? %>
   <tr data-item_id="<%= task.id %>" class="hover1">
     <th><%= check_box_tag 'tasks[]', task.id, false %></th>
@@ -27,4 +28,5 @@
     </div>
     </th>
   </tr>
+
 </div>
