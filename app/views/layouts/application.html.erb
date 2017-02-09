@@ -6,14 +6,22 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script src="sorttable.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $("#sortable").sortable();
+      $("#sortable").disableSelection();
+    });
+  </script>
   <script>
     setTimeout("$('.alert').fadeOut('slow')", 3000)
   </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top ">
   <div class="container">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav pull-right">
       <% if user_signed_in? %>
         <li role="presentation" class="pull-right out"><%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-link', method: :delete %></li>
         <li role="presentation"><%= link_to "Edit user info", edit_user_registration_path, :class => 'navbar-link' %></li>
@@ -28,6 +36,7 @@
 <% flash.each do |type, message| %>
   <div class="alert <%= bootstrap_class_for(type) %> fade in">
     <%= message %>
+    <input type="button" class="btn btn-warning" value="Check All" onclick="check();">
   </div>
 <% end %>
 <div class='container'>
