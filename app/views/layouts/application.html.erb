@@ -36,7 +36,6 @@
 <% flash.each do |type, message| %>
   <div class="alert <%= bootstrap_class_for(type) %> fade in">
     <%= message %>
-    <input type="button" class="btn btn-warning" value="Check All" onclick="check();">
   </div>
 <% end %>
 <div class='container'>
