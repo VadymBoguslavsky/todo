@@ -3,8 +3,8 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks.where(completed: false).order('updated_at').paginate(:page => params[:tasks], :per_page => 10)
-    @completed_tasks = current_user.tasks.where(completed: true).order('updated_at').paginate(:page => params[:tasks], :per_page => 10)
+    @tasks = current_user.tasks.where(completed: false).order('updated_at').paginate(:page => params[:page], :per_page => 10)
+    @completed_tasks = current_user.tasks.where(completed: true).order('updated_at').paginate(:page => params[:page], :per_page => 10)
   end
 
   def new

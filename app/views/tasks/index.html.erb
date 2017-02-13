@@ -29,6 +29,7 @@
       <input type="button" class="btn btn-danger" value="Uncheck All" onclick="uncheck();">
     <% end %>
   </div>
+  <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
   <br>
   <br>
   <%= form_tag destroy_multiple_tasks_path, class: 'batch-del-form', id: 'form2' do %>
@@ -56,3 +57,4 @@
     <input type="button" class="btn btn-danger" value="Uncheck All" onclick="uncheck1();">
   <% end %>
 </div>
+<%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
