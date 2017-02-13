@@ -10,20 +10,20 @@
       </th>
       <th class="text-center"><%= best_in_place task, :priority %></th>
   <% else %>
-    <tr data-item_id="<%= task.id %>" class="hover1 completed_true">
-      <th><%= check_box_tag 'tasks[]', task.id, false %></th>
-      <th>
-        <span class="title">
-          <%= link_to edit_task_path(task) do %>
-            <span class="title">
-              <%= task.title %>
-            </span>
-          <% end %>
-        </span>
-      </th>
-      <th class="text-center completed_true">
-        <%= task.priority %>
-      </th>
+    <th data-item_id="<%= task.id %>" class="hover1 completed_true"></th>
+    <th><%= check_box_tag 'tasks[]', task.id, false %></th>
+    <th>
+      <span class="title">
+        <%= link_to edit_task_path(task) do %>
+          <span class="title">
+            <%= task.title %>
+          </span>
+        <% end %>
+      </span>
+    </th>
+    <th class="text-center completed_true">
+      <%= task.priority %>
+    </th>
   <% end %>
   <th class="text-center">
     <div class="pull-right hover2">
