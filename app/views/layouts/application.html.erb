@@ -8,45 +8,42 @@
   <script src="sorttable.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
   <script>
     $(function () {
       $("#sortable").sortable();
       $("#sortable").disableSelection();
     });
-  </script>
-  <script>
     setTimeout("$('.alert').fadeOut('slow')", 3000)
   </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top ">
-  <div class="container">
-    <ul class="nav navbar-nav pull-right">
-      <% if user_signed_in? %>
-        <li class="<%= 'active' if current_page?(tasks_path) %>">
-          <%= link_to "Main", tasks_path %>
-        </li>
-        <li class="<%= 'active' if current_page?(edit_user_registration_path) %>">
-          <%= link_to "Edit user info",  edit_user_registration_path %>
-        </li>
-        <li role="presentation">
-          <%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-link', method: :delete %>
-        </li>
-      <% else %>
-        <li role="presentation" class="<%= 'active' if current_page?(new_user_session_path) %>">
-          <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link' %>
-        </li>
-      <% end %>
-    </ul>
+  <nav class="navbar navbar-default navbar-static-top ">
+    <div class="container">
+      <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
+          <li class="<%= 'active' if current_page?(tasks_path) %>">
+            <%= link_to "Main", tasks_path %>
+          </li>
+          <li class="<%= 'active' if current_page?(edit_user_registration_path) %>">
+            <%= link_to "Edit user info", edit_user_registration_path %>
+          </li>
+          <li role="presentation">
+            <%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-link', method: :delete %>
+          </li>
+        <% else %>
+          <li role="presentation" class="<%= 'active' if current_page?(new_user_session_path) %>">
+            <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link' %>
+          </li>
+        <% end %>
+      </ul>
     </br>
+    </div>
+  </nav>
+  <div class='container'>
+    <div class='row'>
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
   </div>
-</nav>
-<div class='container'>
-  <div class='row'>
-    <%= flash_messages %>
-    <%= yield %>
-  </div>
-</div>
 </body>
 </html>
