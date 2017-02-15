@@ -26,8 +26,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = current_user.tasks.find params[:id]
-    render_404 unless @task
+    @task = current_user.tasks.find_by_id params[:id]
   end
 
   def edit
