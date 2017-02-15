@@ -8,10 +8,10 @@
       <table class="table table-hover pretty sortable">
         <thead>
           <tr class="info hover1 items_tr_height">
-           <th class="col-xs-1"></th>
+            <th class="col-xs-1"></th>
             <th class="col-xs-5">Title</th>
-           <th class="col-xs-2 text-center">Priority</th>
-           <th class="col-xs-4 text-center"></th>
+            <th class="col-xs-2 text-center">Priority</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -35,12 +35,12 @@
           <th class="col-xs-1"></th>
           <th class="col-xs-5">Title</th>
           <th class="col-xs-2 text-center">Priority</th>
-          <th class="col-xs-4 text-center"></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @completed_tasks.each do |task| %>
-          <%= render partial: 'task', object: task %>
+          <div id="tasks"><%= render partial: 'task', object: task %></div>
         <% end %>
       </tbody>
     </table>

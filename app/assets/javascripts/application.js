@@ -46,6 +46,11 @@
 //= require turbolinks
 //= require_tree .
 
+
+$(document).ready(function () {
+  jQuery(".best_in_place").best_in_place();
+});
+
 $(function () {
   $('#tasks th a, #tasks .pagination a').live('click', function () {
     $.getScript(this.href);
@@ -121,9 +126,6 @@ $(document).on("turbolinks:load", function () {
 
 });
 
-$(document).ready(function () {
-  jQuery(".best_in_place").best_in_place();
-});
 
 var stIsIE = /*@cc_on!@*/false;
 
