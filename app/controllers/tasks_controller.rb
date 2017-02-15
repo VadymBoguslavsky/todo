@@ -21,6 +21,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = current_user.tasks.find_by_id params[:id]
+  end
+
   def edit
     @task = Task.find params[:id]
   end
