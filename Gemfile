@@ -21,7 +21,6 @@ group :assets do
 
 end
 gem 'will_paginate'
-gem 'kaminari'
 gem 'best_in_place', '~> 3.0.1'
 gem 'puma', '~> 3.0'
 gem 'listen', '~> 3.1.5'
