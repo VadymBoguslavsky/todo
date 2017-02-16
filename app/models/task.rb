@@ -4,10 +4,6 @@ class Task < ApplicationRecord
   belongs_to :user
 
   def self.search(search)
-    if search
-      where('name LIKE ?', "%#{search}%")
-    else
-      where(nil)
-    end
+    where('title LIKE ?', "%#{search}%")
   end
 end

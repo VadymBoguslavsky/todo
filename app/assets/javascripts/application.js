@@ -52,10 +52,15 @@ $(document).ready(function () {
 });
 
 $(function () {
-  $('#tasks th a, #tasks .pagination a').live('click', function () {
+  $("#tasks th a, #tasks .pagination a").live("click", function() {
     $.getScript(this.href);
     return false;
   });
+  $("#tasks_search input").keyup(function() {
+    $.get($("#tasks_search").attr("action"), $("#tasks_search").serialize(), null, "script");
+    return false;
+  });
+
   $('#form1, form2').submit(function () {
     $.get(this.action, $(this).serialize(), null, 'script');
     return false;
