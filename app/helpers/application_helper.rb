@@ -2,17 +2,18 @@ module ApplicationHelper
   def bootstrap_class_for(flash_type)
     case flash_type
       when "success"
-        "alert-success"   # Green
+        "alert-success" # Green
       when "error"
-        "alert-danger"    # Red
+        "alert-danger" # Red
       when "alert"
-        "alert-warning"   # Yellow
+        "alert-warning" # Yellow
       when "notice"
-        "alert-info"      # Blue
+        "alert-info" # Blue
       else
         flash_type.to_s
     end
   end
+
 
   def sortable(column, title = nil)
     title ||= column.titleize
@@ -22,4 +23,13 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
+  def flash_messages(opts = {})
+    flash.each do |msg_type, message|
+      concat(content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} fade in") do
+        concat content_tag(:button, 'x', class: "close", data: {dismiss: 'alert'})
+        concat message
+      end)
+    end
+    nil
+  end
 end
