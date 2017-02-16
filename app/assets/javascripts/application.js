@@ -47,6 +47,20 @@
 //= require_tree .
 
 
+$(document).ready(function () {
+  jQuery(".best_in_place").best_in_place();
+});
+
+$(function () {
+  $('#tasks th a, #tasks .pagination a').live('click', function () {
+    $.getScript(this.href);
+    return false;
+  });
+  $('#form1, form2').submit(function () {
+    $.get(this.action, $(this).serialize(), null, 'script');
+    return false;
+  });
+});
 function check() {
   var check = $('#form1').find('input');
   for (var i = 0; i < check.length; i++) {
@@ -112,9 +126,6 @@ $(document).on("turbolinks:load", function () {
 
 });
 
-$(document).ready(function () {
-  jQuery(".best_in_place").best_in_place();
-});
 
 var stIsIE = /*@cc_on!@*/false;
 
