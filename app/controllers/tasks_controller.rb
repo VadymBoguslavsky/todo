@@ -1,15 +1,15 @@
 class TasksController < ApplicationController
-
+  helper_method :sort_column, :sort_direction
   before_action :authenticate_user!
 
   def index
     @tasks = current_user.tasks.all
     if params[:search]
-      @tasks = current_user.tasks.search_for(params[:search]).active.paginate(:per_page => 10, :page => params[:page])
-      @completed_tasks = current_user.tasks.search_for(params[:search]).inactive.paginate(:per_page => 10, :page => params[:page])
+      @tasks = current_user.tasks.search_for(params[:search]).order(sort_column + ' ' + sort_direction).active.paginate(:per_page => 10, :page => params[:page])
+      @completed_tasks = current_user.tasks.search_for(params[:search]).order(sort_column + ' ' + sort_direction).inactive.paginate(:per_page => 10, :page => params[:page])
     else
-      @tasks = current_user.tasks.all.order("created_at DESC").active.paginate(:per_page => 10, :page => params[:page])
-      @completed_tasks = current_user.tasks.all.order("created_at DESC").inactive.paginate(:per_page => 10, :page => params[:page])
+      @tasks = current_user.tasks.all.order(sort_column + ' ' + sort_direction).active.paginate(:per_page => 10, :page => params[:page])
+      @completed_tasks = current_user.tasks.all.order(sort_column + ' ' + sort_direction).inactive.paginate(:per_page => 10, :page => params[:page])
     end
     respond_to do |format|
       format.html
@@ -68,11 +68,11 @@ class TasksController < ApplicationController
   private
 
   def sort_column
-    Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    params[:sort] || "title"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    params[:direction] || "asc"
   end
 
   def task_params

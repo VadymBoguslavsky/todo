@@ -5,15 +5,11 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="sorttable.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-      $(function () {
-        $("#sortable").sortable();
-        $("#sortable").disableSelection();
-      });
       setTimeout("$('.alert').fadeOut('slow')", 3000)
+
     </script>
   </head>
   <body>
@@ -45,7 +41,7 @@
           <%= form_tag tasks_path, :method => 'get', :id => "tasks_search" do %>
             <p>
             <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil %>
+            <%= submit_tag "Search", :name => nil, :id => 'my-submit-btn' %>
             </p>
           <% end %>
           <% if @tasks.blank? %>

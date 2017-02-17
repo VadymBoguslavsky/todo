@@ -56,10 +56,12 @@ $(function () {
     $.getScript(this.href);
     return false;
   });
-  $("#tasks_search input").keyup(function() {
+
+    $("my-submit-btn").keyup(function() {
     $.get($("#tasks_search").attr("action"), $("#tasks_search").serialize(), null, "script");
     return false;
-  });
+    });
+
 
   $('#form1, form2').submit(function () {
     $.get(this.action, $(this).serialize(), null, 'script');
