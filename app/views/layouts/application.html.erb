@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
       setTimeout("$('.alert').fadeOut('slow')", 3000)
-
     </script>
   </head>
   <body>
@@ -23,11 +22,11 @@
             <li class="<%= 'active' if current_page?(edit_user_registration_path) %>">
               <%= link_to "Edit user info", edit_user_registration_path %>
             </li>
-            <li role="presentation">
+            <li>
               <%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-link', method: :delete %>
             </li>
           <% else %>
-            <li role="presentation" class="<%= 'active' if current_page?(new_user_session_path) %>">
+            <li class="<%= 'active' if current_page?(new_user_session_path) %>">
               <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link' %>
             </li>
           <% end %>
@@ -38,15 +37,6 @@
     <div class='container'>
       <div class='row'>
         <%= flash_messages %>
-          <%= form_tag tasks_path, :method => 'get', :id => "tasks_search" do %>
-            <p>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil, :id => 'my-submit-btn' %>
-            </p>
-          <% end %>
-          <% if @tasks.blank? %>
-          <h4>There are no tasks containing the term <%= params[:search] %>.</h4>
-          <% end %>
         <%= yield %>
       </div>
     </div>
