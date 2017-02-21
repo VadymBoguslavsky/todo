@@ -1,5 +1,7 @@
 <div class='col-md-12'>
   <%= form_tag tasks_path, :method => 'get', :id => "tasks_search" do %>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
     <p>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Search", :name => nil, :id => 'my-submit-btn' %>
@@ -18,8 +20,8 @@
         <thead>
           <tr class="hover1">
             <th class="col-xs-1"></th>
-            <th class="col-xs-5"><%= 'Title' %></th>
-            <th class="col-xs-2 text-center"><%= 'Priority' %></th>
+            <th class="col-xs-5"><%=sortable 'Title' %></th>
+            <th class="col-xs-2 text-center"><%=sortable 'Priority' %></th>
             <th></th>
           </tr>
         </thead>
@@ -34,9 +36,6 @@
       <%= submit_tag "Delete selected", method: :delete, type: "submit", data: {confirm: "Are you sure?"}, class: "btn btn-danger batch-del-submit but_delete", id: 'but_disabled1', disabled: true %>
       <input type="button" class="btn btn-warning" value="Check All" onclick="check();">
       <input type="button" class="btn btn-danger" value="Uncheck All" onclick="uncheck();">
-      <%= link_to "Sort by newest", tasks_path(sort_by: 'newer'), class:"btn btn-info"%>
-      <%= link_to "Sort by title", tasks_path(sort_by: 'title'), class:"btn btn-info" %>
-      <%= link_to "Sort by oldest", tasks_path(sort_by: 'oldest'), class:"btn btn-info" %>
       <div id="will_paginate_id"><%= will_paginate @tasks, renderer: BootstrapPagination::Rails %></div>
     <% end %>
   </div>
@@ -63,6 +62,6 @@
     <%= submit_tag "Delete selected", method: :delete, type: "submit", data: {confirm: "Are you sure?"}, class: "btn btn-danger batch-del-submit but_delete", id: 'but_disabled2', disabled: true %>
     <input type="button" class="btn btn-warning" value="Check All" onclick="check1();">
     <input type="button" class="btn btn-danger" value="Uncheck All" onclick="uncheck1();">
-    <div id="will_paginate_id"><%= will_paginate @tasks, renderer: BootstrapPagination::Rails %></div>
+    <div id="will_paginate_id"><%= will_paginate @completed_tasks, renderer: BootstrapPagination::Rails %></div>
   <% end %>
 </div>

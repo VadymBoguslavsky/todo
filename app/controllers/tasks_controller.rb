@@ -4,8 +4,8 @@ class TasksController < ApplicationController
 
   def index
     respond_to do |format|
-      @tasks = current_user.tasks.search_for(params[:search]).order_by(params[:sort_by]).active.paginate(:per_page => 10, :page => params[:page])
-      @completed_tasks = current_user.tasks.search_for(params[:search]).order_by(params[:sort_by]).inactive.paginate(:per_page => 10, :page => params[:page])
+      @tasks = current_user.tasks.search_for(params[:search]).order( sort_column + " " + sort_direction ).active.paginate(:per_page => 10, :page => params[:page])
+      @completed_tasks = current_user.tasks.search_for(params[:search]).order( sort_column + " " + sort_direction ).inactive.paginate(:per_page => 10, :page => params[:page])
       format.html
       format.js
     end
@@ -60,6 +60,13 @@ class TasksController < ApplicationController
   end
 
   private
+  def sort_column
+    params[:sort] || "title"
+  end
+
+  def sort_direction
+    params[:direction] || "asc"
+  end
 
   def task_params
     params.require(:task).permit([
