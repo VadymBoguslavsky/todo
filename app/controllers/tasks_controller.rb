@@ -3,19 +3,11 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks.all
     respond_to do |format|
-      if params[:search]
-        @tasks = @tasks.search_for(params[:search]).order_by(params[:sort_by]).active.paginate(:per_page => 10, :page => params[:page])
-        @completed_tasks = @tasks.search_for(params[:search]).order_by(params[:sort_by]).inactive.paginate(:per_page => 10, :page => params[:page])
-        format.html
-        format.js
-      else
-        @tasks = @tasks.order_by(params[:sort_by]).active.paginate(:per_page => 10, :page => params[:page])
-        @completed_tasks = current_user.tasks.all.order_by(params[:sort_by]).inactive.paginate(:per_page => 10, :page => params[:page])
-        format.html
-        format.js
-      end
+      @tasks = current_user.tasks.search_for(params[:search]).order_by(params[:sort_by]).active.paginate(:per_page => 10, :page => params[:page])
+      @completed_tasks = current_user.tasks.search_for(params[:search]).order_by(params[:sort_by]).inactive.paginate(:per_page => 10, :page => params[:page])
+      format.html
+      format.js
     end
   end
 
