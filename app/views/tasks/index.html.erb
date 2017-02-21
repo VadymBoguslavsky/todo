@@ -6,7 +6,7 @@
     </p>
   <% end %>
   <% if @tasks.blank? %>
-    <p>There are no tasks containing the term <%= params[:search] %>.</p>
+    <h4>There are no tasks containing the term <%= params[:search] %>.</h4>
   <% end %>
   <h1>My tasks</h1>
   <div class="buffer-top">
@@ -18,8 +18,8 @@
         <thead>
           <tr class="hover1">
             <th class="col-xs-1"></th>
-            <th class="col-xs-5"><%= sortable 'Title' %></th>
-            <th class="col-xs-2 text-center"><%= sortable 'Priority' %></th>
+            <th class="col-xs-5"><%= 'Title' %></th>
+            <th class="col-xs-2 text-center"><%= 'Priority' %></th>
             <th></th>
           </tr>
         </thead>
@@ -34,6 +34,9 @@
       <%= submit_tag "Delete selected", method: :delete, type: "submit", data: {confirm: "Are you sure?"}, class: "btn btn-danger batch-del-submit but_delete", id: 'but_disabled1', disabled: true %>
       <input type="button" class="btn btn-warning" value="Check All" onclick="check();">
       <input type="button" class="btn btn-danger" value="Uncheck All" onclick="uncheck();">
+      <%= link_to "Sort by newest", tasks_path(sort_by: 'newer'), class:"btn btn-info"%>
+      <%= link_to "Sort by title", tasks_path(sort_by: 'title'), class:"btn btn-info" %>
+      <%= link_to "Sort by oldest", tasks_path(sort_by: 'oldest'), class:"btn btn-info" %>
       <div id="will_paginate_id"><%= will_paginate @tasks, renderer: BootstrapPagination::Rails %></div>
     <% end %>
   </div>
@@ -63,4 +66,3 @@
     <div id="will_paginate_id"><%= will_paginate @tasks, renderer: BootstrapPagination::Rails %></div>
   <% end %>
 </div>
-

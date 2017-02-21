@@ -46,23 +46,19 @@
 //= require turbolinks
 //= require_tree .
 
-
 $(document).ready(function () {
   jQuery(".best_in_place").best_in_place();
 });
 
 $(function () {
-  $("#tasks th a, #tasks .pagination a").live("click", function() {
+  $("#tasks th a, #tasks .pagination a").live("click", function () {
     $.getScript(this.href);
     return false;
   });
-
-    $("my-submit-btn").keyup(function() {
+  $("my-submit-btn").keyup(function () {
     $.get($("#tasks_search").attr("action"), $("#tasks_search").serialize(), null, "script");
     return false;
-    });
-
-
+  });
   $('#form1, form2').submit(function () {
     $.get(this.action, $(this).serialize(), null, 'script');
     return false;
@@ -76,7 +72,6 @@ function check() {
         $("#but_disabled1").removeAttr("disabled")
       }
       check[i].checked = true;
-
     }
   }
 }
@@ -111,9 +106,7 @@ function uncheck1() {
   }
 }
 
-
 $(document).on("turbolinks:load", function () {
-
   $('#form1 input:checkbox').change(function () {
     if ($('#form1 input:checkbox:checked').length > 0) {
       $("#but_disabled1").removeAttr("disabled");
@@ -121,7 +114,6 @@ $(document).on("turbolinks:load", function () {
       $("#but_disabled1").attr("disabled", "disabled");
     }
   });
-
   $('#form2 input:checkbox').change(function () {
     if ($('#form2 input:checkbox:checked').length > 0) {
       $("#but_disabled2").removeAttr("disabled");
