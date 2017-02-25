@@ -5,8 +5,8 @@ class TasksController < ApplicationController
   def index
     respond_to do |format|
       params.permit!
-      @tasks = initialize_grid(current_user.tasks.active, per_page: 10, order:'tasks.title', order_direction: 'desc')
-      @completed_tasks = initialize_grid(current_user.tasks.inactive, per_page: 10, order:'tasks.title', order_direction: 'desc')
+      @tasks = initialize_grid(current_user.tasks.active, per_page: 10)
+      @completed_tasks = initialize_grid(current_user.tasks.inactive, per_page: 10)
       format.html
       format.js
     end

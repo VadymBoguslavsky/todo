@@ -46,15 +46,25 @@
 //= require turbolinks
 //= require_tree .
 //= require wice_grid
+
 $(document).ready(function () {
   jQuery(".best_in_place").best_in_place();
 });
 
-$('#form1, form2').submit(function () {
-  $.get(this.action, $(this).serialize(), null, 'script');
-  return false;
+$(function () {
+  $("#tasks th a, #tasks .pagination a").live("click", function () {
+    $.getScript(this.href);
+    return false;
+  });
+  $("my-submit-btn").keyup(function () {
+    $.get($("#tasks_search").attr("action"), $("#tasks_search").serialize(), null, "script");
+    return false;
+  });
+  $('#form1, form2').submit(function () {
+    $.get(this.action, $(this).serialize(), null, 'script');
+    return false;
+  });
 });
-
 function check() {
   var check = $('#form1').find('input');
   for (var i = 0; i < check.length; i++) {
