@@ -20,7 +20,7 @@ group :assets do
   gem 'therubyracer', platforms: :ruby
 
 end
-
+gem 'will_paginate'
 gem 'best_in_place', '~> 3.0.1'
 gem 'puma', '~> 3.0'
 gem 'listen', '~> 3.1.5'
@@ -46,7 +46,6 @@ gem 'pgreset'
 group :production do
   gem 'rails_12factor'
 end
-gem 'wice_grid', '> 3.6', git: 'https://github.com/leikind/wice_grid.git', branch: 'rails3'
-gem 'font-awesome-sass',  '~> 4.3'
+gem 'will_paginate-bootstrap'
 gem 'exception_notification'
 ruby '2.3.1'

@@ -4,9 +4,8 @@ class TasksController < ApplicationController
 
   def index
     respond_to do |format|
-      params.permit!
-      @tasks = initialize_grid(current_user.tasks.active, per_page: 10)
-      @completed_tasks = initialize_grid(current_user.tasks.completed, per_page: 10)
+      @tasks = current_user.tasks.search_for(params[:search]).order( sort_column + " " + sort_direction ).active.paginate(:per_page => 10, :page => params[:page])
+      @completed_tasks = current_user.tasks.search_for(params[:search]).order( sort_column + " " + sort_direction ).completed.paginate(:per_page => 10, :page => params[:page])
       format.html
       format.js
     end
