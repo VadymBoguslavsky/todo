@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       params.permit!
       @tasks = initialize_grid(current_user.tasks.active, per_page: 10)
-      @completed_tasks = initialize_grid(current_user.tasks.inactive, per_page: 10)
+      @completed_tasks = initialize_grid(current_user.tasks.completed, per_page: 10)
       format.html
       format.js
     end

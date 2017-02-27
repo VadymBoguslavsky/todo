@@ -15,5 +15,5 @@ class Task < ApplicationRecord
 
   scoped_search on: [:title, :priority]
   scope :active, -> { where(completed: false) }
-  scope :inactive, -> { where(completed: true) }
+  scope :completed, -> { where(completed: true) }
 end
