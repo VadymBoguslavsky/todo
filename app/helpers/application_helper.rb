@@ -16,12 +16,11 @@ module ApplicationHelper
 
   def sortable(column, title = nil)
     title ||= column.titleize
-    direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
-    if params[:page]
-      link_to title, :sort => column, :direction => direction, :page => params[:page]
-    else
-      link_to title, :sort => column, :direction => direction
-    end
+    query = {:sort => column}
+    query[:page] = params[:page] if params[:page]
+    query[:direction] = params[:direction] if params[:direction]
+    query[:search] = params[:search] if params[:search]
+    link_to title, query
   end
 
   def flash_messages(opts = {})
