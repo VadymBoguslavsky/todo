@@ -1,4 +1,6 @@
-<div class="task priority_<%= task.priority %> completed_<%= task.completed %>   ">
+<div class="task priority_<%= task.priority %> completed_<%= task.completed %>">
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
   <% unless task.completed? %>
     <tr data-item_id="<%= task.id %>" class="hover1">
       <th><%= check_box_tag 'tasks[]', task.id, false %></th>
