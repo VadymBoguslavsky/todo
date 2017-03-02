@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
-
+  helper_method :sort_column, :sort_direction
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks.where(completed: false).search(params[:search]).paginate(:per_page => 10, :page => params[:page])
-    @completed_tasks = current_user.tasks.where(completed: true).search(params[:search]).paginate(:per_page => 10, :page => params[:page])
+    @tasks = current_user.tasks.search_for(params[:search]).order(sort_column + " " + sort_direction).active.paginate(:per_page => 10, :page => params[:page])
+    @completed_tasks = current_user.tasks.search_for(params[:search]).order(sort_column + " " + sort_direction).completed.paginate(:per_page => 10, :page => params[:page])
     respond_to do |format|
       format.html
       format.js
@@ -61,6 +61,13 @@ class TasksController < ApplicationController
   end
 
   private
+  def sort_column
+    params[:sort] || "title"
+  end
+
+  def sort_direction
+    params[:direction] || "asc"
+  end
 
   def task_params
     params.require(:task).permit([

@@ -20,12 +20,13 @@ group :assets do
   gem 'therubyracer', platforms: :ruby
 
 end
+gem "scoped_search"
 gem 'will_paginate'
 gem 'best_in_place', '~> 3.0.1'
 gem 'puma', '~> 3.0'
 gem 'listen', '~> 3.1.5'
 gem 'mailgun_rails'
-
+gem "scoped_search"
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
