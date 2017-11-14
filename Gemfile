@@ -47,6 +47,9 @@ gem 'pgreset'
 group :production do
   gem 'rails_12factor'
 end
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 gem 'will_paginate-bootstrap'
 gem 'exception_notification'
 ruby '2.3.1'

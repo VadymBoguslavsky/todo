@@ -18,6 +18,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
+      HardWorker.perform_async("02-03-16", "03-03-16")
       flash[:notice] = "Task successfully created"
       redirect_to tasks_path
     else
